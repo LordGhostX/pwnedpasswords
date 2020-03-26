@@ -1,10 +1,10 @@
 #a password checker!!!!!!!
-#checks if your password has every been hacked, how cool is this?
+#checks if your password has ever been hacked, how cool is this?
 
 import requests #manually requesting for data from a browser
 import hashlib
 import sys
-#hash your passwords (there are online hash generators,depends on your API)
+#hash your passwords (there are online hash generators, the one you use depends on your API)
 #k anonimity: ensures your passwords aren't linked to your identity online
 
 def request_api_data(query_char):
@@ -24,7 +24,7 @@ def api_check(password):
     #print(hashlib.sha1(password.encod('utf-8').hexdigest().upper()))
     hashd_password = hashlib.sha1(password.encode('utf-8').upper()).hexdigest()
     #print(hashd_password)
-    first5, tail = hashd_password[0:5], hashd_password[5:]
+    first5, tail = hashd_password[0:5], hashd_password[5:] #shows only the first characters of your hashed password
     password_response = request_api_data(first5)
     #print(password_response)
     return get_password_hacks(password_response,tail)

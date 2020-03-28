@@ -8,7 +8,11 @@ def index():
     result = None
     password = request.form.get("password", None)
     if password:
-        result = "{:,}".format(check_pwned(password)["count"])
+        r = check_pwned(password)
+        if r["success"]:
+            result = "Your password has been breached {:,} times".format(r["count"])
+        else:
+            result = "An error occured while checking your password. Please try again later"
     return render_template("index.html", result=result)
 
 @app.route("/check_pwned/<password>")

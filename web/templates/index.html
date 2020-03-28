@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link href="{{ url_for('static', filename = 'css/main.css') }}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="s01">
+      <form method="post">
+        <fieldset>
+          <legend>Pwned</legend>
+        </fieldset>
+        <p>Check if your password has been compromised in a data breach</p>
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <input id="search" type="text" name="password" placeholder="Enter password to check" />
+          </div>
+          <div class="input-field third-wrap">
+            <button class="btn-search" type="button">Search</button>
+          </div>
+        </div>
+        {% if result %}
+        <p align="center">Your password has been breached {{ result }} times</p>
+        {% endif %}
+      </form>
+    </div>
+  </body>
+</html>
